@@ -15,10 +15,6 @@
 ## Admin Page:
 	https://admin.mlapi.ai/
 	
-	Email: 		claycrews2002@gmail.com
-	Username: 	546FinalProject_SP23
-	Password: 	CSCE546!
-	
 ## Dev API Key:
 	
 	
