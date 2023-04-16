@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">What\'s That Plant</string>
+
+    <string name="take_photo">This is the plant!</string>
+
+    <string name="one_string">%s</string>
+</resources>
