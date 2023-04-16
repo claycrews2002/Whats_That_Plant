@@ -1,27 +1,29 @@
 # Whats_That_Plant
 
-API:
+
+
+## API:
 	plant.id
 
-Documentation:
+## Documentation:
 	https://github.com/flowerchecker/Plant-id-API/wiki
 	
-Admin Page:
+## Admin Page:
 	https://admin.mlapi.ai/
 	
 	Email: 	claycrews2002@gmail.com
 	Username: 	546FinalProject_SP23
 	Password: 	CSCE546!
 	
-Dev API Key:
+## Dev API Key:
 	tNfcdZf9BO11x5aGXnxRFfrfg7NjXNRp58UTZtnlFUZlYdMDjM
 	
 	
 	
-Response Example:	[returned from app] 
+## Response Example:	[returned from app] 
 
 
-PlantData(
+`PlantData(
 	id=75731085, 
 	suggestions=[
 		Suggestion(
@@ -85,6 +87,6 @@ PlantData(
 		)], 
 		isPlantProbability=0.9974805354, 
 		isPlant=true
-	)
+	)`
 
 
