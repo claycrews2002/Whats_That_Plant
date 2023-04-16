@@ -1,7 +1,6 @@
 package com.example.whatsthatplant
 
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,11 +8,8 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.whatsthatplant.formatters.formatProb
 import com.example.whatsthatplant.formatters.formatString
@@ -22,12 +18,9 @@ import com.example.whatsthatplant.imageSelection.TakePhoto
 import com.example.whatsthatplant.network.PlantData
 import com.example.whatsthatplant.network.PlantIdApi
 import kotlinx.coroutines.*
-import org.w3c.dom.Text
-import kotlin.math.roundToInt
 
 
 const val REQUEST_CODE_RETURN_PHOTO = 1
-const val REQUEST_CODE_EXTERNAL_STORAGE = 2
 
 class MainActivity : AppCompatActivity() {
 
@@ -43,7 +36,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var propagationMethodsText: TextView
     private lateinit var linkText: TextView
     private lateinit var similarImageView: ImageView
-    private lateinit var originalImageView: ImageView
 
     private lateinit var isPlantProbabilityText: TextView
 
@@ -67,7 +59,6 @@ class MainActivity : AppCompatActivity() {
         propagationMethodsText = findViewById(R.id.propagation_methods_value)
         linkText = findViewById(R.id.wiki_url_value)
         similarImageView = findViewById(R.id.selected_image)
-        originalImageView = findViewById(R.id.original_image)
 
         isPlantProbabilityText = findViewById(R.id.is_a_plant_probability_value)
 
@@ -142,13 +133,6 @@ class MainActivity : AppCompatActivity() {
                     resources.getString(R.string.one_string, formatTwoItems(propagationMethods))
                 linkText.text = resources.getString(R.string.one_string, formatString(link))
 
-
-                Glide.with(this)
-                    .load(originalImageUri)
-                    .placeholder(placeholderImg)
-                    .error(errorImg)
-                    .centerCrop()
-                    .into(originalImageView)
 
                 Glide.with(this)
                     .load(imageUrl)

@@ -4,22 +4,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/plant_data_group"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_margin="@dimen/base_margin"
     app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/data_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="30dp"
         android:layout_marginBottom="@dimen/base_margin"
         android:orientation="vertical"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <!-- Labels -->
@@ -28,7 +26,7 @@
             style="@style/Label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Probability: "
+            android:text="Match Accuracy: "
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="@+id/data_group" />
 
@@ -120,92 +118,54 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/original_image_group"
+
+
+        <TextView
+            android:id="@+id/similar_image_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            style="@style/Label"
+            android:text="Similar Image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-            <TextView
-                android:id="@+id/original_image_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/Label"
-                android:text="Original Image"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+        <ImageView
+            android:id="@+id/selected_image"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="@dimen/base_margin"
+            android:layout_marginBottom="@dimen/base_margin"
+            android:layout_marginStart="50dp"
+            app:layout_constraintStart_toStartOf="@id/similar_image_label"
+            app:layout_constraintTop_toBottomOf="@id/similar_image_label"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:contentDescription="Similar Image" />
 
-            <ImageView
-                android:id="@+id/original_image"
-                android:layout_width="164dp"
-                android:layout_height="200dp"
-                app:layout_constraintStart_toStartOf="@id/original_image_label"
-                app:layout_constraintTop_toBottomOf="@id/original_image_group"
-                android:layout_marginEnd="@dimen/base_margin"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:contentDescription="Original Image" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/image_group"
+        <TextView
+            android:id="@+id/wiki_url_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintStart_toEndOf="@id/original_image_group"
-            app:layout_constraintTop_toTopOf="parent">
+            style="@style/Label"
+            android:text="More Info: "
+            app:layout_constraintTop_toBottomOf="@+id/selected_image"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/similar_image_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/Label"
-                android:text="Similar Image"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <ImageView
-                android:id="@+id/selected_image"
-                android:layout_width="164dp"
-                android:layout_height="200dp"
-                app:layout_constraintStart_toStartOf="@id/similar_image_label"
-                app:layout_constraintTop_toBottomOf="@id/similar_image_label"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:contentDescription="Similar Image" />
-
-            <TextView
-                android:id="@+id/wiki_url_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/Label"
-                android:text="More Info: "
-                app:layout_constraintTop_toBottomOf="@+id/selected_image"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/wiki_url_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/one_string"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                app:layout_constraintTop_toBottomOf="@+id/selected_image"
-                app:layout_constraintStart_toEndOf="@id/wiki_url_label"
-                android:autoLink="web" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/wiki_url_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/one_string"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:maxLength="30"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            app:layout_constraintTop_toBottomOf="@+id/selected_image"
+            app:layout_constraintStart_toEndOf="@id/wiki_url_label"
+            android:autoLink="web" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>

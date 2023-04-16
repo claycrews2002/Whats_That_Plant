@@ -7,7 +7,6 @@
     tools:context=".MainActivity">
 
 
-
     <include
         android:id="@+id/plant_data_layout"
         layout="@layout/plant_data"
