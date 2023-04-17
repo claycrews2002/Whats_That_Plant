@@ -95,7 +95,10 @@ class MainActivity : AppCompatActivity() {
             }
 
 
-            Log.e("ActivityResult", "Image URI: $imageUri")
+
+            plantDataDisplay.visibility = View.GONE
+            notaPlantDisplay.visibility = View.GONE
+            plantDataErrorDisplay.visibility = View.GONE
             // loading screen
             loadingDisplay.visibility = View.VISIBLE
 
@@ -114,9 +117,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateUI(plantData: PlantData?, originalImageUri: Uri?) {
         loadingDisplay.visibility = View.GONE
-        plantDataDisplay.visibility = View.GONE
-        notaPlantDisplay.visibility = View.GONE
-        plantDataErrorDisplay.visibility = View.GONE
+
 
         if (plantData != null) {
             val isPlant = plantData.isPlant ?: false

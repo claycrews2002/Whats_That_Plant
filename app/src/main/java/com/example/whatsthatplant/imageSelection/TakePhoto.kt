@@ -94,7 +94,6 @@ class TakePhoto : AppCompatActivity() {
                     // Return the image to the main activity
                     val intent = Intent()
                     intent.putExtra("image_uri", output.savedUri.toString())
-                    Log.e("TakePhoto", "Image URI: ${output.savedUri}")
                     setResult(RESULT_OK, intent)
                     finish()
                 }
