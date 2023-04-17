@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.net.toUri
 import com.bumptech.glide.Glide
 import com.example.whatsthatplant.formatters.formatProb
 import com.example.whatsthatplant.formatters.formatString
@@ -20,7 +21,8 @@ import com.example.whatsthatplant.network.PlantIdApi
 import kotlinx.coroutines.*
 
 
-const val REQUEST_CODE_RETURN_PHOTO = 1
+const val REQUEST_CODE_TAKE_PHOTO = 1
+const val REQUEST_CODE_SELECT_PHOTO = 2
 
 class MainActivity : AppCompatActivity() {
 
@@ -65,14 +67,14 @@ class MainActivity : AppCompatActivity() {
         livePlantButton.setOnClickListener {
             // launch take photo activity
             val intent = Intent(this, TakePhoto::class.java)
-            startActivityForResult(intent, REQUEST_CODE_RETURN_PHOTO)
+            startActivityForResult(intent, REQUEST_CODE_TAKE_PHOTO)
         }
 
         savedPlantButton.setOnClickListener {
             // select photo from device
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
-            startActivityForResult(intent, REQUEST_CODE_RETURN_PHOTO)
+            startActivityForResult(intent, REQUEST_CODE_SELECT_PHOTO)
         }
 
     }
@@ -81,9 +83,19 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == REQUEST_CODE_RETURN_PHOTO && resultCode == RESULT_OK) {
-            val imageUri = data?.data // Get the captured image Uri from the intent
+        if ((requestCode == REQUEST_CODE_TAKE_PHOTO || requestCode == REQUEST_CODE_SELECT_PHOTO) && resultCode == RESULT_OK) {
+            var imageUri: Uri? = null
 
+            if (requestCode == REQUEST_CODE_TAKE_PHOTO) {
+                val imageUriStr = data?.getStringExtra("image_uri")
+                imageUri = Uri.parse(imageUriStr)
+            }
+            if (requestCode == REQUEST_CODE_SELECT_PHOTO) {
+                imageUri = data?.data // Get the captured image Uri from the intent
+            }
+
+
+            Log.e("ActivityResult", "Image URI: $imageUri")
             // loading screen
             loadingDisplay.visibility = View.VISIBLE
 

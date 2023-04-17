@@ -41,18 +41,22 @@ private suspend fun encodeImage(context: Context, imageUri: Uri?): String = with
 
     var base64String: String? = null
     try {
-        // Get the InputStream for the image URI using the ContentResolver
-        val inputStream = context.contentResolver.openInputStream(imageUri!!)
-        // Convert the InputStream to a byte array using a ByteArrayOutputStream
-        val buffer = ByteArray(8192)
-        var bytesRead: Int
-        val output = ByteArrayOutputStream()
-        while (inputStream?.read(buffer).also { bytesRead = it!! } != -1) {
-            output.write(buffer, 0, bytesRead)
+        if (imageUri != null) {
+            // Get the InputStream for the image URI using the ContentResolver
+            val inputStream = context.contentResolver.openInputStream(imageUri)
+            // Convert the InputStream to a byte array using a ByteArrayOutputStream
+            val buffer = ByteArray(8192)
+            var bytesRead: Int
+            val output = ByteArrayOutputStream()
+            while (inputStream?.read(buffer).also { bytesRead = it!! } != -1) {
+                output.write(buffer, 0, bytesRead)
+            }
+            val imageBytes = output.toByteArray()
+            // Encode the byte array in base64
+            base64String = Base64.encodeToString(imageBytes, Base64.DEFAULT)
+        } else {
+            Log.e("EncodeImage", "imageUri is NULL")
         }
-        val imageBytes = output.toByteArray()
-        // Encode the byte array in base64
-        base64String = Base64.encodeToString(imageBytes, Base64.DEFAULT)
     } catch (e: IOException) {
         e.printStackTrace()
     }
