@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var notaPlantDisplay: androidx.appcompat.widget.LinearLayoutCompat
     private lateinit var plantDataErrorDisplay: androidx.appcompat.widget.LinearLayoutCompat
     private lateinit var loadingDisplay: ConstraintLayout
+    private lateinit var welcomePageDisplay: ConstraintLayout
 
     private lateinit var probabilityText: TextView
     private lateinit var commonNameText: TextView
@@ -53,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         notaPlantDisplay = findViewById(R.id.not_a_plant_layout)
         plantDataErrorDisplay = findViewById(R.id.plant_data_error_layout)
         loadingDisplay = findViewById(R.id.loading_layout)
+        welcomePageDisplay = findViewById(R.id.welcome_page_layout)
 
         probabilityText = findViewById(R.id.probability_value)
         commonNameText = findViewById(R.id.common_name_value)
@@ -95,7 +97,7 @@ class MainActivity : AppCompatActivity() {
             }
 
 
-
+            welcomePageDisplay.visibility = View.GONE
             plantDataDisplay.visibility = View.GONE
             notaPlantDisplay.visibility = View.GONE
             plantDataErrorDisplay.visibility = View.GONE
