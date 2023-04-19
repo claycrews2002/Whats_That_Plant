@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <include
+        android:id="@+id/welcome_page_layout"
+        layout="@layout/welcome_page"
+        android:visibility="visible" />
 
     <include
         android:id="@+id/plant_data_layout"
