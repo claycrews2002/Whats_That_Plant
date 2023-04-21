@@ -11,14 +11,14 @@ fun formatTwoItems(items: List<String>?): String {
         }
         return retString
     }
-    return ""
+    return "N/A"
 }
 
 fun formatString(name: String?): String {
     if (name != null) {
         return name
     }
-    return ""
+    return "N/A"
 }
 
 fun formatProb(prob: Double?): String {
@@ -27,5 +27,5 @@ fun formatProb(prob: Double?): String {
         val formattedValue = String.format("%.1f", roundedValue * 100.0)
         return "$formattedValue%"
     }
-    return ""
+    return "N/A"
 }
