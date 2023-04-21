@@ -158,7 +158,6 @@ class MainActivity : AppCompatActivity() {
                 }
 
 
-
                 Glide.with(this)
                     .load(imageUrl)
                     .placeholder(placeholderImg)
