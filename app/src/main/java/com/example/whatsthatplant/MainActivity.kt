@@ -1,5 +1,6 @@
 package com.example.whatsthatplant
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.bumptech.glide.Glide
 import com.example.whatsthatplant.formatters.formatProb
@@ -19,9 +21,6 @@ import com.example.whatsthatplant.network.PlantData
 import com.example.whatsthatplant.network.PlantIdApi
 import kotlinx.coroutines.*
 
-
-const val REQUEST_CODE_TAKE_PHOTO = 1
-const val REQUEST_CODE_SELECT_PHOTO = 2
 
 class MainActivity : AppCompatActivity() {
 
@@ -68,31 +67,32 @@ class MainActivity : AppCompatActivity() {
         livePlantButton.setOnClickListener {
             // launch take photo activity
             val intent = Intent(this, TakePhoto::class.java)
-            startActivityForResult(intent, REQUEST_CODE_TAKE_PHOTO)
+            getPhotoResultLauncher.launch(intent)
         }
 
         savedPlantButton.setOnClickListener {
             // select photo from device
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
-            startActivityForResult(intent, REQUEST_CODE_SELECT_PHOTO)
+            getPhotoResultLauncher.launch(intent)
         }
 
     }
 
     // Retrieve image in onActivityResult for both captured and selected image
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
+    private val getPhotoResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
 
-        if ((requestCode == REQUEST_CODE_TAKE_PHOTO || requestCode == REQUEST_CODE_SELECT_PHOTO) && resultCode == RESULT_OK) {
+        if (result.resultCode == Activity.RESULT_OK) {
             var imageUri: Uri? = null
 
-            if (requestCode == REQUEST_CODE_TAKE_PHOTO) {
-                val imageUriStr = data?.getStringExtra("image_uri")
+            val isTakePhoto = result.data?.getBooleanExtra("take_photo", false)
+
+            if (isTakePhoto == true) {
+                val imageUriStr = result.data?.getStringExtra("image_uri")
                 imageUri = Uri.parse(imageUriStr)
             }
-            if (requestCode == REQUEST_CODE_SELECT_PHOTO) {
-                imageUri = data?.data // Get the captured image Uri from the intent
+            if (isTakePhoto == false) {
+                imageUri = result.data?.data // Get the captured image Uri from the intent
             }
 
 
@@ -185,3 +185,4 @@ class MainActivity : AppCompatActivity() {
 
 
 }
+
