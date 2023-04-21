@@ -146,7 +146,18 @@ class MainActivity : AppCompatActivity() {
                     resources.getString(R.string.one_string, formatTwoItems(edibleParts))
                 propagationMethodsText.text =
                     resources.getString(R.string.one_string, formatTwoItems(propagationMethods))
-                linkText.text = resources.getString(R.string.one_string, formatString(link))
+
+                // Truncate and link text
+                val maxChars = 35
+                val formattedLink = resources.getString(R.string.one_string, formatString(link))
+                val truncatedLink = formattedLink.substring(0, maxChars) + "..."
+                linkText.text = truncatedLink
+
+                linkText.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(formattedLink))
+                    startActivity(intent)
+                }
+
 
 
                 Glide.with(this)
