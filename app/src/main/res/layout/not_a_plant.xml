@@ -2,7 +2,6 @@
 <androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/plant_data_group"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -27,7 +26,7 @@
             style="@style/Label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No Plant Detected!"
+            android:text="@string/no_plant_detected"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
@@ -37,7 +36,7 @@
             style="@style/Label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Probability this is a Plant: "
+            android:text="@string/probability_this_is_a_plant"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/not_a_plant_alert" />
 

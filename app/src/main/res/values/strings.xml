@@ -4,4 +4,20 @@
     <string name="take_photo">This is the plant!</string>
 
     <string name="one_string">%s</string>
+    <string name="live_plant">LIVE PLANT</string>
+    <string name="saved_plant">SAVED PLANT</string>
+    <string name="identifying_your_plant">Identifying Your Plant</string>
+    <string name="loading_animation">loading animation</string>
+    <string name="no_plant_detected">No Plant Detected!</string>
+    <string name="probability_this_is_a_plant">Probability this is a Plant:</string>
+    <string name="match_accuracy">Match Accuracy:</string>
+    <string name="common_name">Common Name:</string>
+    <string name="scientific_name">Scientific Name:</string>
+    <string name="edible_parts">Edible Parts:</string>
+    <string name="propagation_methods">Propagation Methods:</string>
+    <string name="similar_image">Similar Image</string>
+    <string name="more_info">More Info:</string>
+    <string name="an_error_occurred_identifying_this_plant">An error occurred identifying this plant...</string>
+    <string name="whats_that_plant">What\'s That Plant?</string>
+    <string name="welcome_page_text">Take a photo or select a saved image!</string>
 </resources>

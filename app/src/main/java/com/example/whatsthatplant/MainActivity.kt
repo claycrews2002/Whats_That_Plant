@@ -10,7 +10,6 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.net.toUri
 import com.bumptech.glide.Glide
 import com.example.whatsthatplant.formatters.formatProb
 import com.example.whatsthatplant.formatters.formatString
@@ -110,14 +109,14 @@ class MainActivity : AppCompatActivity() {
 
                 // switch to main thread to update UI
                 withContext(Dispatchers.Main) {
-                    updateUI(plantData, imageUri)
+                    updateUI(plantData)
                 }
             }
 
         }
     }
 
-    private fun updateUI(plantData: PlantData?, originalImageUri: Uri?) {
+    private fun updateUI(plantData: PlantData?) {
         loadingDisplay.visibility = View.GONE
 
 
@@ -157,7 +156,6 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(formattedLink))
                     startActivity(intent)
                 }
-
 
 
                 Glide.with(this)

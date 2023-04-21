@@ -2,7 +2,6 @@
 <androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/plant_data_group"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -26,7 +25,7 @@
             style="@style/Label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Match Accuracy: "
+            android:text="@string/match_accuracy"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="@id/data_group" />
 
@@ -35,7 +34,7 @@
             style="@style/Label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Common Name: "
+            android:text="@string/common_name"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/probability_label" />
 
@@ -44,7 +43,7 @@
             style="@style/Label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Scientific Name: "
+            android:text="@string/scientific_name"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/common_name_label" />
 
@@ -53,7 +52,7 @@
             style="@style/Label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edible Parts:"
+            android:text="@string/edible_parts"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/scientific_name_label" />
 
@@ -62,7 +61,7 @@
             style="@style/Label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Propagation Methods: "
+            android:text="@string/propagation_methods"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edible_parts_label" />
 
@@ -133,7 +132,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/Label"
-            android:text="Similar Image"
+            android:text="@string/similar_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -148,14 +147,14 @@
             app:layout_constraintTop_toBottomOf="@id/similar_image_label"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:contentDescription="Similar Image" />
+            android:contentDescription="@string/similar_image" />
 
         <TextView
             android:id="@+id/wiki_url_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/Label"
-            android:text="More Info: "
+            android:text="@string/more_info"
             app:layout_constraintTop_toBottomOf="@+id/selected_image"
             app:layout_constraintStart_toStartOf="parent" />
 
